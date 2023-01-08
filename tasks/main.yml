@@ -1,0 +1,42 @@
+---
+- name: Install required system packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+- name: Add apt GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+
+- name: Add apt repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+    filename: docker
+    update_cache: true
+
+- name: Install
+  apt:
+    name: docker-ce
+    cache_valid_time: 86400
+
+- name: Install Docker Compose
+  apt:
+    name: docker-compose-plugin
+    update_cache: true
+    cache_valid_time: 86400
+
+- name: Enable service
+  service:
+    name: docker
+    enabled: true
+
+- name: Adding users the 'docker' group
+  user:
+    name: "{{item}}"
+    groups: docker
+    append: true
+  with_items: "{{ docker_users }}"
