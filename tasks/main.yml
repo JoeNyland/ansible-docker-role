@@ -11,6 +11,7 @@
           - curl
           - gnupg
           - lsb-release
+        update_cache: true
 
     - name: Add apt GPG key
       apt_key:
