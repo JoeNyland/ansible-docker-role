@@ -29,7 +29,7 @@
 
     - name: Install Docker Compose
       apt:
-        name: docker-compose-plugin
+        name: "{{ 'docker-compose-plugin' if ansible_distribution_version|int >= 10 else 'docker-compose' }}"
         update_cache: true
         cache_valid_time: 86400
 
