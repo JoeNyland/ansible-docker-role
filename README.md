@@ -1,12 +1,17 @@
-# docker
+joenyland.docker
+================
 
-Installs Docker
+[![CI](https://github.com/JoeNyland/ansible-docker-role/actions/workflows/ci.yml/badge.svg)](https://github.com/JoeNyland/ansible-docker-role/actions/workflows/ci.yml)
 
-## Requirements
+Installs [Docker (CE)](https://www.docker.com/).
+
+Requirements
+------------
 
 None.
 
-## Role Variables
+Role Variables
+--------------
 
 ### `docker_users`
 
@@ -16,26 +21,34 @@ This adds the requested users to the `docker` group on the target hosts, which a
 
 More info https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 
-## Dependencies
+Dependencies
+------------
 
 None.
 
-## Example Playbook
+Example Playbook
+----------------
 
 ```yaml
 # requirements.yml
 roles:
   - name: joenyland.docker
-    src: https://github.com/JoeNyland/ansible-docker-role.git
+    src: https://github.com/JoeNyland/ansible-docker-role
 ```
 
 ```yaml
 # Playbook
-- hosts: servers
+- hosts: server
   roles:
-      - role: joenyland.docker
-        become: true
+    - joenyland.docker
 ```
-## License
+
+License
+-------
 
 MIT
+
+Author Information
+------------------
+
+⌨️ with ❤️ by [Joe Nyland](https://joe.nyland.io)
