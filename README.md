@@ -24,16 +24,17 @@ None.
 
 ```yaml
 # requirements.yml
-- src: https://github.com/JoeNyland/ansible-docker-role.git
-  name: joenyland.docker
+roles:
+  - name: joenyland.docker
+    src: https://github.com/JoeNyland/ansible-docker-role.git
 ```
 
 ```yaml
 # Playbook
-    - hosts: servers
-      roles:
-         - role: joenyland.docker
-           become: true
+- hosts: servers
+  roles:
+      - role: joenyland.docker
+        become: true
 ```
 ## License
 
