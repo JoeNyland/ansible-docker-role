@@ -1,14 +1,16 @@
 galaxy_info:
   author: Joe Nyland
+  role_name: docker
+  namespace: joenyland
   description: Installs Docker
   license: MIT
-  min_ansible_version: 2.1
+  min_ansible_version: '2.1'
   platforms:
   - name: Debian
     versions:
-    - all
-    - 11
-
+      - bullseye # 11 (stable)
+      - buster # 10 (oldstable)
+      - stretch # 9 LTS (oldoldstable)
   galaxy_tags:
     - docker
     - container
