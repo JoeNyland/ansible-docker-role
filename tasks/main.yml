@@ -30,7 +30,7 @@
 
     - name: Install Docker Compose
       apt:
-        name: "{{ 'docker-compose-plugin' if ansible_distribution_version|int >= 10 else 'docker-compose' }}"
+        name: "{{ 'docker-compose-plugin' if ansible_distribution_version | int >= 10 else 'docker-compose' }}"
         update_cache: true
         cache_valid_time: 86400
 
@@ -41,7 +41,7 @@
 
     - name: Adding users the 'docker' group
       user:
-        name: "{{item}}"
+        name: "{{ item }}"
         groups: docker
         append: true
       with_items: "{{ docker_users }}"
