@@ -30,14 +30,6 @@ Example Playbook
 ----------------
 
 ```yaml
-# requirements.yml
-roles:
-  - name: joenyland.docker
-    src: https://github.com/JoeNyland/ansible-docker-role
-```
-
-```yaml
-# Playbook
 - hosts: server
   roles:
     - joenyland.docker
