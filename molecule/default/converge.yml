@@ -5,3 +5,11 @@
     - name: "Include joenyland.docker"
       include_role:
         name: "joenyland.docker"
+      vars:
+        docker_daemon_config:
+          experimental: true
+          ipv6: true
+          ip6tables: true
+          fixed-cidr-v6: a:b:c::/48
+          registry-mirrors:
+            - https://registry.ipv6.docker.com
