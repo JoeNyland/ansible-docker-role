@@ -21,6 +21,24 @@ This adds the requested users to the `docker` group on the target hosts, which a
 
 More info https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 
+### `docker_daemon_config`
+
+A hash of configuration to be stored in `/etc/docker/daemon.json`.
+
+Allows configuration of the Docker daemon.
+
+E.g.
+
+```yaml
+docker_daemon_config:
+  experimental: true
+  ipv6: true
+  ip6tables: true
+  fixed-cidr-v6: 2001:aaaa:bbbb:ccc::/64
+  registry-mirrors:
+    - https://registry.ipv6.docker.com
+```
+
 Dependencies
 ------------
 
