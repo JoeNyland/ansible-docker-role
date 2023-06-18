@@ -3,20 +3,23 @@
   become: true
   tags: docker
   block:
-    - name: Install required system packages
-      apt:
-        name:
-          - apt-transport-https
-          - gnupg
-        update_cache: true
+    - name: Create keyring directory
+      file:
+        path: /etc/apt/keyrings # Does not exist on Debian < 12
+        state: directory
+        mode: '0755'
+      when: ansible_distribution_major_version|int < 12
 
     - name: Add apt GPG key
-      apt_key:
+      get_url:
         url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/trusted.gpg.d/docker.asc
+        mode: '0644'
+        force: true # Download new versions when they are available
 
     - name: Add apt repository
       apt_repository:
-        repo: deb https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+        repo: deb [signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
         filename: docker
         update_cache: true
 
