@@ -17,6 +17,10 @@
         mode: '0644'
         force: true # Download new versions when they are available
 
+    - name: Install gpg
+      apt:
+        name: gpg
+
     - name: Add apt repository
       apt_repository:
         repo: deb [signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
