@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # needed for progressive mode to work
+        uses: actions/checkout@v4
       - name: Run ansible-lint
         uses: ansible/ansible-lint-action@v6
 
@@ -27,9 +25,7 @@ jobs:
           - geerlingguy/docker-debian10-ansible # buster (oldoldstable)
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # needed for progressive mode to work
+        uses: actions/checkout@v4
       - name: Run molecule
         uses: gofrolist/molecule-action@v2
         env:
@@ -43,9 +39,7 @@ jobs:
     if: github.ref_name == 'main'
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # needed for progressive mode to work
+        uses: actions/checkout@v4
       - name: Publish
         uses: robertdebock/galaxy-action@1.2.0
         with:
